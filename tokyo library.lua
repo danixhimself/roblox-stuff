@@ -4700,7 +4700,7 @@ function library:init()
 end
 
 function library:CreateSettingsTab(menu)
-    local settingsTab = menu:AddTab('settings', 999);
+    local settingsTab = menu:AddTab('   settings   ', 999);
     local mainSection = settingsTab:AddSection('settings', 1);
     --[[local configSection = settingsTab:AddSection('Config', 1);
 
