@@ -4684,7 +4684,7 @@ function library:init()
         end
     end)
 
-    self.keyIndicator = self.NewIndicator({title = 'Keybinds', pos = newUDim2(0,15,0,325), enabled = true});
+    self.keyIndicator = self.NewIndicator({title = 'keybinds', pos = newUDim2(0,15,0,325), enabled = false});
     
     self.targetIndicator = self.NewIndicator({title = 'Target Info', pos = newUDim2(0,15,0,350), enabled = false});
     self.targetName = self.targetIndicator:AddValue({key = 'Name     :', value = 'nil'})
@@ -4701,7 +4701,7 @@ end
 
 function library:CreateSettingsTab(menu)
     local settingsTab = menu:AddTab('settings', 999);
-    local mainSection = settingsTab:AddSection('indicators', 1);
+    local mainSection = settingsTab:AddSection('settings', 1);
     --[[local configSection = settingsTab:AddSection('Config', 1);
 
     configSection:AddBox({text = 'Config Name', flag = 'configinput'})
@@ -4781,9 +4781,13 @@ function library:CreateSettingsTab(menu)
            else
                library:Unload() 
            end
-       end})
+       end})]]
 
-    mainSection:AddSeparator({text = 'Indicators'})]]
+    mainSection:AddBind({text = 'menu bind', flag = 'togglebind', nomouse = true, noindicator = true, bind = Enum.KeyCode.Delete, callback = function()
+        library:SetOpen(not library.open)
+    end});
+
+    mainSection:AddSeparator({text = 'indicators'})
 
     mainSection:AddToggle({text = 'watermark', flag = 'watermark_enabled', state = false,});
 
